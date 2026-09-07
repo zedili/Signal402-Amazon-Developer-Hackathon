@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Signal402 gives Alexa+ agents a human-controlled, non-custodial x402 payment layer.">
+  <title>Signal402 · Human control for agent payments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Signal402 home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>signal<span>402</span></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#demo">Live demo</a>
+      <a href="#architecture">How it works</a>
+      <a class="github-link" href="https://github.com/zedili/Signal402-Amazon-Developer-Hackathon">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> Alexa+ ready · MCP over Streamable HTTP</div>
+        <h1>Your agent can pay.<br><em>You stay in control.</em></h1>
+        <p>Signal402 is the non-custodial policy and approval layer between an AI agent, your wallet, and paid x402 resources.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#demo">Run the payment demo <span>↓</span></a>
+          <a class="button secondary" id="health-link" href="./health">Service health</a>
+        </div>
+        <div class="trust-row" aria-label="Product guarantees">
+          <span><b>01</b> No private keys</span>
+          <span><b>02</b> Explicit approval</span>
+          <span><b>03</b> Tamper-evident audit</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Signal402 protection visual">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="agent-node"><span>+</span><small>Alexa+</small></div>
+        <div class="guard-node">
+          <span class="pulse"></span>
+          <svg viewBox="0 0 48 58" role="img" aria-label="Shield"><path d="M24 2 44 10v15c0 14-8 24-20 31C12 49 4 39 4 25V10L24 2Z"/><path d="m16 29 5 5 12-13"/></svg>
+          <strong>POLICY<br>GUARD</strong>
+        </div>
+        <div class="resource-node"><span>$</span><small>x402 API</small></div>
+        <div class="flow-label flow-a">intent</div>
+        <div class="flow-label flow-b">approved</div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="demo">
+      <div class="section-heading">
+        <div><span class="section-index">01</span><h2>Alexa+ payment lab</h2></div>
+        <p>Run a complete 402 → policy → approval → wallet → settlement flow. The demo uses test data and never moves real funds.</p>
+      </div>
+
+      <div class="demo-grid">
+        <section class="conversation-panel" aria-labelledby="conversation-title">
+          <div class="panel-bar">
+            <div><span class="online-dot"></span><strong id="conversation-title">Alexa+ simulator</strong></div>
+            <button class="icon-button" id="reset-button" aria-label="Reset demo">↻</button>
+          </div>
+          <div class="conversation" id="conversation" aria-live="polite">
+            <div class="message alexa">
+              <div class="avatar">A</div>
+              <div><span>Alexa+</span><p>I can purchase the premium climate-risk signal you requested. Signal402 will check it before anything is signed.</p></div>
+            </div>
+          </div>
+          <div class="prompt-bar">
+            <div><span class="prompt-prefix">›</span><span>Buy the premium climate-risk signal</span></div>
+            <button id="start-button">Run <kbd>↵</kbd></button>
+          </div>
+        </section>
+
+        <aside class="guard-panel" aria-labelledby="guard-title">
+          <div class="panel-bar">
+            <div><span class="shield-mini">S</span><strong id="guard-title">Payment guard</strong></div>
+            <span class="mode-pill">TESTNET</span>
+          </div>
+          <div class="guard-content">
+            <div class="empty-state" id="empty-state">
+              <div class="radar"><span></span></div>
+              <h3>Waiting for an intent</h3>
+              <p>Run the Alexa+ request to inspect the x402 challenge and policy decision.</p>
+            </div>
+
+            <div class="intent-view hidden" id="intent-view">
+              <div class="state-line"><span id="state-dot"></span><small>PAYMENT STATE</small><strong id="state-label">AWAITING APPROVAL</strong></div>
+              <div class="amount-card">
+                <span>Requested amount</span>
+                <strong><i>$</i><span id="amount">6.50</span> <small>USDC</small></strong>
+                <p id="purpose">Premium climate-risk signal pack</p>
+              </div>
+              <dl class="details">
+                <div><dt>Payee</dt><dd id="payee">0x4020…2026</dd></div>
+                <div><dt>Network</dt><dd id="network">Base Sepolia</dd></div>
+                <div><dt>Daily budget</dt><dd><span id="budget-spent">$0</span> / <span id="budget-limit">$25</span></dd></div>
+                <div><dt>Auto-pay limit</dt><dd id="auto-limit">$5.00</dd></div>
+              </dl>
+              <div class="policy-result" id="policy-result">
+                <span>!</span><div><strong>Human approval required</strong><p>Amount exceeds your $5 autonomous limit.</p></div>
+              </div>
+              <div class="guard-actions" id="approval-actions">
+                <button class="deny" id="deny-button">Deny</button>
+                <button class="approve" id="approve-button">Approve $6.50</button>
+              </div>
+              <button class="wallet-button hidden" id="wallet-button"><span>◇</span> Sign with demo wallet</button>
+              <button class="settle-button hidden" id="settle-button">Verify & unlock resource →</button>
+              <div class="receipt hidden" id="receipt">
+                <span>✓</span><div><strong>Payment settled</strong><p id="transaction">0x0000…0000</p></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="demo-note"><span>DEMO SAFETY</span> Wallet signing and settlement are simulated on a test network. Production mode accepts an externally signed x402 payload and never handles a private key.</div>
+    </section>
+
+    <section class="architecture" id="architecture">
+      <div class="section-heading">
+        <div><span class="section-index">02</span><h2>Seven checks. One safe payment.</h2></div>
+        <p>Each transition is explicit, validated, and written to a hash-chained audit log.</p>
+      </div>
+      <ol class="flow-steps">
+        <li><span>01</span><strong>Discover</strong><p>Request resource and receive HTTP 402.</p></li>
+        <li><span>02</span><strong>Validate</strong><p>Pin price, payee, network, and timeout.</p></li>
+        <li><span>03</span><strong>Policy</strong><p>Apply budget and trusted-payee rules.</p></li>
+        <li><span>04</span><strong>Approve</strong><p>Ask the human only when required.</p></li>
+        <li><span>05</span><strong>Sign</strong><p>Keep the private key in the wallet.</p></li>
+        <li><span>06</span><strong>Settle</strong><p>Verify, retry, and prevent replay.</p></li>
+        <li><span>07</span><strong>Audit</strong><p>Return receipt and protected result.</p></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand"><span class="brand-mark"><i></i><i></i><i></i></span><span>signal<span>402</span></span></div>
+    <p>Built for the Amazon Developer Hackathon 2026 · Open source under MIT</p>
+  </footer>
+</body>
+</html>

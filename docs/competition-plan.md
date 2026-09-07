@@ -11,14 +11,14 @@
 - [x] Create standalone repository and provenance boundary.
 - [x] Add a working Streamable HTTP MCP server.
 - [x] Add deterministic payment-policy tests.
-- [ ] Implement complete x402 challenge validation and receipt verification.
-- [ ] Add persistent policy and audit storage on AWS.
-- [ ] Build the simulated Alexa+ conversational experience.
-- [ ] Add human approval and wallet-signature handoff.
+- [x] Implement complete x402 challenge validation and receipt verification.
+- [x] Add persistent policy and audit storage on AWS.
+- [x] Build the simulated Alexa+ conversational experience.
+- [x] Add human approval and wallet-signature handoff.
 - [ ] Deploy a judge-accessible endpoint.
-- [ ] Produce architecture diagram and threat model.
+- [x] Produce architecture diagram and threat model.
 - [ ] Record an English demo under three minutes.
-- [ ] Write product feedback and friction log.
+- [x] Write product feedback and friction log.
 
 ## Judging strategy
 
