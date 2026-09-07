@@ -5,6 +5,7 @@ RUN npm ci
 COPY tsconfig.json vitest.config.ts ./
 COPY src ./src
 COPY test ./test
+COPY public ./public
 RUN npm run check
 
 FROM node:24-alpine AS runtime
