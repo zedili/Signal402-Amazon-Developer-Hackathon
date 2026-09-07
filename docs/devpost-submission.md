@@ -67,7 +67,7 @@ and add user-scoped authorization through Amazon Cognito.
 
 ## Links to insert before final submission
 
-- Public demo: pending one-time GitHub Pages enablement or AWS deployment
+- Public demo: https://zedili.github.io/Signal402-Amazon-Developer-Hackathon/
 - Video (English, under 3 minutes): pending recording
 - Repository: https://github.com/zedili/Signal402-Amazon-Developer-Hackathon
 

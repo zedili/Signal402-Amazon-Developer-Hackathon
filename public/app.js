@@ -136,6 +136,10 @@ elements.reset.addEventListener("click", () => void reset());
 
 if (staticMode) {
   const healthLink = document.querySelector("#health-link");
+  const modePill = document.querySelector(".mode-pill");
+  const demoNote = document.querySelector("#demo-note");
   healthLink.textContent = "View service source";
   healthLink.href = "https://github.com/zedili/Signal402-Amazon-Developer-Hackathon/tree/main/src";
+  modePill.textContent = "PUBLIC JUDGE DEMO";
+  demoNote.innerHTML = '<span>PUBLIC DEMO</span> This page runs a deterministic in-browser Alexa+ simulation and moves no funds. The repository contains the real MCP Streamable HTTP server, REST API, payment state machine, and AWS deployment path.';
 }

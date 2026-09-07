@@ -1,5 +1,9 @@
 # Signal402 Payment Guard for Alexa+
 
+[![CI](https://github.com/zedili/Signal402-Amazon-Developer-Hackathon/actions/workflows/ci.yml/badge.svg)](https://github.com/zedili/Signal402-Amazon-Developer-Hackathon/actions/workflows/ci.yml)
+[![Public demo](https://img.shields.io/badge/public_demo-open-34d17b)](https://zedili.github.io/Signal402-Amazon-Developer-Hackathon/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-111512.svg)](LICENSE)
+
 Signal402 lets an Alexa+ agent buy an x402-protected digital resource while the
 human keeps control of budget, approval, and wallet signing. It is a complete,
 non-custodial reference implementation: MCP tools, HTTP API, conversational
@@ -23,6 +27,17 @@ accept an externally signed wallet payload → verify → retry → validate rec
 - Repository: https://github.com/zedili/Signal402-Amazon-Developer-Hackathon
 
 ## Try the end-to-end demo
+
+**[Open the public interactive judge demo →](https://zedili.github.io/Signal402-Amazon-Developer-Hackathon/)**
+
+The public page is a deterministic, in-browser TESTNET simulation so judges can
+complete the flow without an account, API key, wallet, or real funds. The source
+repository also contains the real MCP Streamable HTTP server, REST API, payment
+state machine, remote x402 adapters, and AWS deployment path.
+
+For a two-minute technical review, follow the [judge guide](docs/judge-guide.md).
+
+### Run the real server locally
 
 ```bash
 npm install
@@ -116,6 +131,9 @@ Operational details are in [docs/deployment.md](docs/deployment.md).
 - [Architecture and state machine](docs/architecture.md)
 - [Threat model](docs/threat-model.md)
 - [Three-minute demo script](docs/demo-script.md)
+- [Judge guide](docs/judge-guide.md)
+- [Recording and submission kit](docs/demo-kit.md)
+- [Friction log](docs/friction-log.md)
 - [Devpost submission draft](docs/devpost-submission.md)
 - [Product feedback](docs/product-feedback.md)
 - [Source provenance](docs/source-provenance.md)
