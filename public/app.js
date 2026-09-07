@@ -10,7 +10,7 @@ const elements = {
 };
 
 let currentIntent;
-const staticMode = location.hostname.endsWith("github.io") || location.hostname === "cdn.jsdelivr.net";
+const staticMode = location.hostname.endsWith("github.io");
 const demoInput = {
   resourceUrl: "demo://premium-climate-risk-signal",
   amount: 6.5,

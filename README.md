@@ -21,7 +21,6 @@ accept an externally signed wallet payload → verify → retry → validate rec
 - MCP SDK: official TypeScript SDK v2
 - Public license: MIT
 - Repository: https://github.com/zedili/Signal402-Amazon-Developer-Hackathon
-- Zero-value public demo: https://cdn.jsdelivr.net/gh/zedili/Signal402-Amazon-Developer-Hackathon@main/public/index.html
 
 ## Try the end-to-end demo
 
