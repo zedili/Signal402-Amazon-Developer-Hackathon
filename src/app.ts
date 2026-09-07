@@ -1,5 +1,4 @@
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 import { createMcpExpressApp } from "@modelcontextprotocol/express";
 import { toNodeHandler } from "@modelcontextprotocol/node";
@@ -118,7 +117,7 @@ export function createApp(options: AppOptions = {}) {
   const mcpNodeHandler = toNodeHandler(createSignal402McpHandler(service));
   app.all("/mcp", (request, response) => void mcpNodeHandler(request, response, request.body));
 
-  const publicDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../public");
+  const publicDirectory = path.resolve(process.cwd(), "public");
   app.use(express.static(publicDirectory, { extensions: ["html"], maxAge: "1h" }));
   app.get("/{*path}", (request, response, next) => {
     if (request.path.startsWith("/api") || request.path.startsWith("/mcp")) return next();
